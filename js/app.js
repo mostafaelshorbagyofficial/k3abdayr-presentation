@@ -235,15 +235,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Fullscreen Handler
+  // Fullscreen Handler with cross-browser Android & iOS guard
   function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => {
-        console.warn(`Error attempting to enable fullscreen: ${err.message}`);
-      });
+    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!isFullscreen) {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.warn(`Fullscreen error: ${err.message}`);
+        });
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
       }
     }
   }
@@ -252,10 +259,21 @@ document.addEventListener('DOMContentLoaded', () => {
     fullscreenBtn.addEventListener('click', toggleFullscreen);
   }
 
-  // Modal Handlers
+  // Modal Handlers with scroll lock & restore
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
+
   function closeAllModals() {
     if (galleryModal) galleryModal.classList.remove('active');
     if (videoModal) videoModal.classList.remove('active');
+    document.body.style.overflow = '';
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.overflowX = 'hidden';
   }
 
   modalCloseBtns.forEach(btn => {
@@ -282,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (modalImg) modalImg.src = imgSrc;
       if (modalTitle) modalTitle.textContent = imgTitle;
-      if (galleryModal) galleryModal.classList.add('active');
+      openModal(galleryModal);
     });
   });
 
@@ -302,9 +320,39 @@ document.addEventListener('DOMContentLoaded', () => {
       if (modalDesc) modalDesc.textContent = videoDesc;
       if (modalLink) modalLink.href = videoUrl;
 
-      if (videoModal) videoModal.classList.add('active');
+      openModal(videoModal);
     });
   });
+
+  // Video Player Fullscreen & Viewport Restorer (Android & iOS)
+  const outroVideo = document.querySelector('.outro-main-video-el');
+  if (outroVideo) {
+    outroVideo.setAttribute('playsinline', '');
+    outroVideo.setAttribute('webkit-playsinline', 'true');
+    outroVideo.setAttribute('x5-playsinline', 'true');
+
+    const restorePlayerLayout = () => {
+      document.body.style.overflow = '';
+      document.body.style.overflowX = 'hidden';
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.overflowX = 'hidden';
+      outroVideo.style.width = '100%';
+      outroVideo.style.height = '100%';
+      outroVideo.style.objectFit = 'contain';
+    };
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        restorePlayerLayout();
+      }
+    });
+    document.addEventListener('webkitfullscreenchange', () => {
+      if (!document.webkitFullscreenElement) {
+        restorePlayerLayout();
+      }
+    });
+    outroVideo.addEventListener('webkitendfullscreen', restorePlayerLayout);
+  }
 
   // Default to English on load
   let initialLang = 'en';
