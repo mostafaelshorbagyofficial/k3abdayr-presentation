@@ -2014,7 +2014,8 @@ body {
   pointer-events: none;
 }
 
-.opening-cartoon-hero-img {
+.opening-cartoon-hero-img,
+.opening-artwork-hero-img {
   position: relative;
   z-index: 2;
   width: auto;
@@ -2027,7 +2028,8 @@ body {
   display: block;
   margin: 0 auto;
 }
-.opening-poster-stage:hover .opening-cartoon-hero-img {
+.opening-poster-stage:hover .opening-cartoon-hero-img,
+.opening-poster-stage:hover .opening-artwork-hero-img {
   transform: scale(1.03) translateY(-6px);
   filter: drop-shadow(0 36px 85px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 50px rgba(255, 122, 0, 0.35));
 }
@@ -2894,5 +2896,35 @@ html[dir="rtl"] .trio-feature-item::before {
   .group-breakdown-grid,
   .value-gain-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mobile-Only Adjustment for Introduction Cover Image ── */
+@media (max-width: 768px) {
+  #slide-01 .opening-artwork-hero-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #slide-01 .opening-cartoon-hero-img,
+  #slide-01 .opening-artwork-hero-img {
+    max-height: 260px;
+    max-width: min(75vw, 260px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  #slide-01 .opening-cartoon-hero-img,
+  #slide-01 .opening-artwork-hero-img {
+    max-height: 210px;
+    max-width: min(68vw, 210px);
   }
 }
