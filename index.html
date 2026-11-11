@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="assets/k3abdayr/logo_1.jpeg">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -146,6 +146,52 @@
        MAIN PRESENTATION WRAPPER
        ========================================================================== -->
   <main class="presentation-wrapper">
+
+    <!-- ==========================================================================
+         00 — PROMEDIA OPENING SCREEN (CINEMATIC INTRO BEFORE SLIDE 01)
+         ========================================================================== -->
+    <section class="promedia-intro-section" id="promedia-intro">
+      <div class="promedia-bg-glow"></div>
+      
+      <div class="slide-container">
+        <div class="promedia-stage">
+          <!-- ProMedia Logo Frame -->
+          <div class="promedia-logo-wrap">
+            <img src="assets/brand/promedia_logo.png" 
+                 alt="ProMedia — Official Logo" 
+                 class="promedia-hero-logo">
+          </div>
+
+          <!-- Presents Badge -->
+          <div class="promedia-presents-badge">
+            <span class="lang-en">PROMEDIA PRESENTS</span>
+            <span class="lang-ar">بروميديا تقدم</span>
+          </div>
+
+          <!-- CapDare Show Identity -->
+          <h1 class="promedia-hero-title">
+            <span class="lang-en">CAPDARE</span>
+            <span class="lang-ar">كعب داير</span>
+          </h1>
+
+          <!-- Supporting Tagline -->
+          <p class="promedia-hero-sub">
+            <span class="lang-en">Travel Content Production & Collaboration Proposal</span>
+            <span class="lang-ar">إنتاج محتوى وتوثيق تجارب السفر الإبداعية</span>
+          </p>
+
+          <!-- Enter Action Button -->
+          <div class="promedia-action-box">
+            <a href="#slide-01" class="promedia-enter-btn" id="enterPresentationBtn">
+              <span class="lang-en">ENTER PRESENTATION <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="lang-ar">ابدأ العرض التقديمي <i class="fa-solid fa-arrow-left"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- ==========================================================================
          01 — COVER
@@ -763,7 +809,7 @@
           <p class="slide-subtitle lang-ar">الجمهور لا يشتري مجرد تذاكر وفنادق، بل يبحث عن التجربة الحقيقية والمشاعر التي تلهمه للسفر.</p>
         </div>
 
-        <div class="cinematic-story-flow" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+        <div class="cinematic-story-flow">
           <div class="cinematic-beat-card" style="background: rgba(255,255,255,0.05); border: 1px solid var(--cinematic-border); border-radius: 14px; padding: 2rem; backdrop-filter: blur(8px);">
             <div style="font-size: 2.2rem; color: var(--accent-orange); margin-bottom: 1rem;"><i class="fa-solid fa-heart-pulse"></i></div>
             <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.75rem;" class="lang-en">Authentic Narrative</h3>
@@ -1269,7 +1315,7 @@
           <p class="slide-subtitle lang-ar">توزيع احترافي ومحدد للمهام لضمان نجاح الرحلة وظهور المحتوى بأفضل صورة.</p>
         </div>
 
-        <div class="give-get-partnership-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+        <div class="give-get-partnership-container">
           <!-- CapDare Delivers -->
           <div class="partnership-side-box" style="background: var(--bg-card-light); border: 1px solid var(--primary-blue-border); border-radius: 14px; padding: 2rem;">
             <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
@@ -1322,7 +1368,7 @@
           <p class="slide-subtitle lang-ar">تفاصيل لوجستية واضحة ومدروسة لضمان راحة الفريق وانسيابية التصوير.</p>
         </div>
 
-        <div class="opportunity-matrix" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+        <div class="opportunity-matrix">
           <div class="opp-card" style="background: var(--bg-card-light); border: 1px solid var(--primary-blue-border); border-radius: 14px; padding: 2rem; box-shadow: var(--shadow-subtle);">
             <div style="font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 1rem;"><i class="fa-solid fa-hotel"></i></div>
             <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-en">Accommodation</h3>
@@ -1370,58 +1416,72 @@
         <div class="slide-header centered">
           <div class="slide-tagline">
             <span class="slide-number-badge">16</span>
-            <span class="lang-en">COMMERCIAL TERMS</span>
-            <span class="lang-ar">الاتفاق المالي</span>
+            <span class="lang-en">FINANCIAL TERMS</span>
+            <span class="lang-ar">العرض المالي</span>
           </div>
-          <h2 class="slide-title-arabic lang-en">A FLEXIBLE FINANCIAL AGREEMENT</h2>
-          <h2 class="slide-title-arabic lang-ar">اتفاق مالي مرن ومخصص</h2>
-          <p class="slide-subtitle lang-en">Tailored commercial compensation agreed upon separately based on destination and scope.</p>
-          <p class="slide-subtitle lang-ar">نموذج مالي مرن يتم تحديده ومناقشته بصورة منفصلة بما يتناسب مع طبيعة الوجهة ونطاق الإنتاج.</p>
+          <h2 class="slide-title-arabic lang-en">PROPOSED PACKAGE FEE</h2>
+          <h2 class="slide-title-arabic lang-ar">قيمة باقة الإنتاج المقترحة</h2>
+          <p class="slide-subtitle lang-en">A complete travel content production package tailored for tourism destinations.</p>
+          <p class="slide-subtitle lang-ar">باقة إنتاج محتوى سياحي متكاملة ومخصصة لإبراز الوجهات السياحية.</p>
         </div>
 
-        <div class="opportunity-matrix" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
-          <div class="opp-card" style="background: var(--bg-card-light); border: 1px solid var(--primary-blue-border); border-radius: 14px; padding: 2rem; box-shadow: var(--shadow-subtle);">
-            <div style="font-size: 2.2rem; color: var(--accent-orange); margin-bottom: 1rem;"><i class="fa-solid fa-sliders"></i></div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-en">Custom Scope</h3>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-ar">تخصيص كامل</h3>
-            <p style="font-size: 0.92rem; color: var(--text-dark-secondary); line-height: 1.6;" class="lang-en">
-              Every travel campaign is unique. Deliverables and timelines are tailored specifically to match your marketing goals.
-            </p>
-            <p style="font-size: 0.92rem; color: var(--text-dark-secondary); line-height: 1.6;" class="lang-ar">
-              نصمم تفاصيل الحزمة وعدد المخرجات بدقة لتلائم أهدافكم التسويقية وموسم الرحلة المطلوب.
-            </p>
-          </div>
+        <!-- Main USD 10,000 Pricing Stage -->
+        <div class="pricing-showcase-stage">
+          <div class="pricing-hero-card">
+            <div class="pricing-badge-pill">
+              <i class="fa-solid fa-tag"></i>
+              <span class="lang-en">PROPOSED PACKAGE FEE</span>
+              <span class="lang-ar">قيمة باقة الإنتاج المقترحة</span>
+            </div>
 
-          <div class="opp-card" style="background: var(--bg-card-light); border: 1px solid var(--primary-blue-border); border-radius: 14px; padding: 2rem; box-shadow: var(--shadow-subtle);">
-            <div style="font-size: 2.2rem; color: var(--accent-orange); margin-bottom: 1rem;"><i class="fa-solid fa-handshake"></i></div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-en">Mutual Value</h3>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-ar">شراكة متبادلة النفع</h3>
-            <p style="font-size: 0.92rem; color: var(--text-dark-secondary); line-height: 1.6;" class="lang-en">
-              Logistics coverage plus agreed production compensation discussed transparently in private consultation.
-            </p>
-            <p style="font-size: 0.92rem; color: var(--text-dark-secondary); line-height: 1.6;" class="lang-ar">
-              تغطية التكاليف اللوجستية بالإضافة للمقابل المالي للإنتاج يتم الاتفاق عليها بكل شفافية.
-            </p>
-          </div>
+            <div class="pricing-amount-row">
+              <span class="pricing-amount-val lang-en">$10,000 <span class="pricing-amount-curr">USD</span></span>
+              <span class="pricing-amount-val lang-ar">10,000 <span class="pricing-amount-curr">دولار أمريكي</span></span>
+            </div>
 
-          <div class="opp-card" style="background: var(--bg-card-light); border: 1px solid var(--primary-blue-border); border-radius: 14px; padding: 2rem; box-shadow: var(--shadow-subtle);">
-            <div style="font-size: 2.2rem; color: var(--accent-orange); margin-bottom: 1rem;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-en">Separate Discussion</h3>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-dark); margin-bottom: 0.5rem;" class="lang-ar">مناقشة مخصصة</h3>
-            <p style="font-size: 0.92rem; color: var(--text-dark-secondary); line-height: 1.6;" class="lang-en">
-              Financial terms are finalized directly with organizers based on itinerary duration, destination distance, and season.
-            </p>
-            <p style="font-size: 0.92rem; color: var(--text-dark-secondary); line-height: 1.6;" class="lang-ar">
-              يتم استكمال التفاصيل المالية مع إدارة الشركة بناءً على مدة الرحلة، بعد الوجهة، وتوقيت الإطلاق.
-            </p>
+            <div class="pricing-package-desc">
+              <span class="lang-en">A complete travel content production package</span>
+              <span class="lang-ar">باقة إنتاج محتوى سياحي متكاملة</span>
+            </div>
+
+            <!-- Included Value Highlights -->
+            <div class="pricing-features-grid">
+              <div class="pricing-feat-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="lang-en">5 Collaborative Cinematic Episodes</span>
+                <span class="lang-ar">5 حلقات فيديو سينمائية مشتركة</span>
+              </div>
+              <div class="pricing-feat-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="lang-en">Daily Live Stories & Real-Time BTS</span>
+                <span class="lang-ar">تغطية ستوريز يومية حية وكواليس</span>
+              </div>
+              <div class="pricing-feat-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="lang-en">3 Core Production Creators (Mazen, Moaz, Elhagan)</span>
+                <span class="lang-ar">3 صناع محتوى وفريق إنتاج متكامل</span>
+              </div>
+              <div class="pricing-feat-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="lang-en">Multi-Platform Publishing (+13M Verified Reach)</span>
+                <span class="lang-ar">نشر رسمي عبر المنصات (+13M متابع)</span>
+              </div>
+              <div class="pricing-feat-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="lang-en">Full Post-Production (Color, Edit, Audio)</span>
+                <span class="lang-ar">مونتاج احترافي ومكساج صوتي شامل</span>
+              </div>
+              <div class="pricing-feat-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="lang-en">Commercial Marketing Rights for Partner</span>
+                <span class="lang-ar">حقوق الاستخدام والتسويق الرقمي للشريك</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         17 — STRATEGIC VALUE: MORE THAN COVERAGE. REAL CONTENT VALUE.
-         ========================================================================== -->
     <section class="slide-section theme-sand" id="slide-17">
       <div class="slide-container">
         <div class="slide-header centered">
@@ -1707,6 +1767,6 @@
   </div>
 
   <!-- Main JavaScript Engine -->
-  <script src="js/app.js?v=4"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>

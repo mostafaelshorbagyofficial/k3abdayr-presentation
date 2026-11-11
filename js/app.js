@@ -162,6 +162,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(section => observer.observe(section));
 
+  // ProMedia Intro Screen Handlers
+  const promediaIntro = document.getElementById('promedia-intro');
+  const enterBtn = document.getElementById('enterPresentationBtn');
+  if (enterBtn) {
+    enterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      goToSlide(0);
+    });
+  }
+
+  if (promediaIntro) {
+    const introObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (navbar) navbar.classList.add('is-dark-section');
+          if (navCounterCurrent) navCounterCurrent.textContent = '00';
+          if (navTrack) navTrack.style.width = '0%';
+          navSteps.forEach(s => s.classList.remove('active', 'passed'));
+        }
+      });
+    }, { threshold: 0.4 });
+    introObserver.observe(promediaIntro);
+  }
+
   // Jump to slide function
   function goToSlide(index) {
     if (index < 0 || index >= totalSections) return;
