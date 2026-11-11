@@ -2621,3 +2621,278 @@ body {
   color: #fff;
   line-height: 1.2;
 }
+
+
+/* ==========================================================================
+   BILINGUAL SYSTEM (ENGLISH DEFAULT / ARABIC SECONDARY)
+   ========================================================================== */
+
+/* Language Visibility */
+html[lang="en"] .lang-ar {
+  display: none !important;
+}
+html[lang="ar"] .lang-en {
+  display: none !important;
+}
+
+/* English Typography & Direction */
+html[lang="en"],
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] body {
+  direction: ltr;
+  text-align: left;
+  font-family: var(--font-en-sans);
+}
+
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4,
+html[lang="en"] .slide-title,
+html[lang="en"] .cover-main-title,
+html[lang="en"] .slide-title-arabic {
+  font-family: var(--font-en-display);
+  letter-spacing: -0.01em;
+}
+
+/* Arabic Typography & Direction */
+html[lang="ar"],
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="ar"] body {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-ar-primary);
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] .slide-title,
+html[lang="ar"] .cover-main-title,
+html[lang="ar"] .slide-title-arabic {
+  font-family: var(--font-ar-primary);
+  letter-spacing: normal;
+}
+
+/* Timeline progress fill direction */
+html[dir="ltr"] .nav-timeline-fill {
+  left: 0;
+  right: auto;
+  background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+}
+
+html[dir="rtl"] .nav-timeline-fill {
+  right: 0;
+  left: auto;
+  background: linear-gradient(-90deg, var(--primary-blue), var(--accent-orange));
+}
+
+/* Language Switcher Button in Navbar */
+.nav-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(47, 58, 141, 0.08);
+  border: 1px solid var(--primary-blue-border);
+  border-radius: 999px;
+  padding: 3px;
+  margin-inline: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.top-navbar.is-dark-section .nav-lang-switcher {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--cinematic-border);
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dark-secondary);
+  font-family: var(--font-en-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  line-height: 1;
+}
+
+.top-navbar.is-dark-section .lang-btn {
+  color: var(--text-light-secondary);
+}
+
+.lang-btn.active {
+  background: var(--accent-orange);
+  color: #fff !important;
+  box-shadow: 0 0 12px var(--accent-orange-glow);
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--accent-orange);
+}
+
+/* Directional helper adjustments */
+html[dir="ltr"] .slide-header {
+  text-align: left;
+}
+html[dir="ltr"] .slide-header.centered {
+  text-align: center;
+}
+html[dir="rtl"] .slide-header {
+  text-align: right;
+}
+html[dir="rtl"] .slide-header.centered {
+  text-align: center;
+}
+
+html[dir="ltr"] .trio-feature-item::before {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+html[dir="rtl"] .trio-feature-item::before {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Comparison Table / Responsibilities for Slide 14 */
+.collab-responsibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.collab-responsibility-card {
+  background: var(--bg-card-light);
+  border: 1px solid var(--primary-blue-border);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.collab-responsibility-card:hover {
+  border-color: var(--accent-orange);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.collab-responsibility-card.partner-card {
+  border-top: 4px solid var(--accent-orange);
+}
+
+.collab-responsibility-card.capdare-card {
+  border-top: 4px solid var(--primary-blue);
+}
+
+.collab-duty-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.collab-duty-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.collab-duty-item i {
+  margin-top: 0.25rem;
+  font-size: 1rem;
+}
+
+/* Group breakdown cards for Slide 13 */
+.group-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
+}
+
+.group-capdare-box {
+  background: var(--bg-card-light);
+  border: 1px solid var(--primary-blue-border);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.group-guides-box {
+  background: rgba(255, 122, 0, 0.04);
+  border: 1px solid rgba(255, 122, 0, 0.25);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.group-total-banner {
+  background: var(--primary-blue-dark);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 2rem;
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(18, 24, 56, 0.2);
+}
+
+/* Strategic value pills */
+.value-gain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.value-gain-card {
+  background: var(--bg-card-light);
+  border: 1px solid var(--primary-blue-border);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-fast);
+}
+
+.value-gain-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-orange);
+  box-shadow: var(--shadow-medium);
+}
+
+.value-gain-card .vg-icon {
+  font-size: 2rem;
+  color: var(--accent-orange);
+  margin-bottom: 0.85rem;
+}
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+  .collab-responsibility-grid,
+  .group-breakdown-grid,
+  .value-gain-grid {
+    grid-template-columns: 1fr;
+  }
+}

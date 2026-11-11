@@ -1,6 +1,6 @@
 /**
- * K3AB DAYR — UMRAH SPECIAL (SEASON 3)
- * Interactive Presentation Engine
+ * CAPDARE — TRAVEL CONTENT PRODUCTION & COLLABORATION PROPOSAL
+ * Interactive Presentation Engine with Bilingual Support (EN / AR)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryModal = document.getElementById('galleryModal');
   const videoModal = document.getElementById('videoModal');
   const modalCloseBtns = document.querySelectorAll('.modal-close-btn');
+  const langBtns = document.querySelectorAll('.lang-btn');
 
   let currentSectionIndex = 0;
   const totalSections = sections.length;
@@ -24,6 +25,78 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navCounterTotal) {
     navCounterTotal.textContent = String(totalSections).padStart(2, '0');
   }
+
+  // Bilingual Tooltip Titles & Metadata
+  const timelineTitles = {
+    en: [
+      '01 Cover', '02 Who We Are', '03 Our Experience', '04 The Team',
+      '05 Digital Reach', '06 Why CapDare', '07 The Idea', '08 Collaboration',
+      '09 Content Strategy', '10 The 5 Episodes', '11 Stories Coverage', '12 Multi-Platform',
+      '13 Production Team', '14 How We Work', '15 Travel & Logistics', '16 Financial Terms',
+      '17 Partner Value', '18 Complete Package', '19 The Big Picture', '20 Let\'s Collaborate'
+    ],
+    ar: [
+      '01 الغلاف', '02 من نحن', '03 سابقة الأعمال', '04 فريق العمل',
+      '05 الانتشار الرقمي', '06 لماذا كعب داير', '07 الفكرة', '08 فرصة التعاون',
+      '09 استراتيجية المحتوى', '10 الحلقات الخمس', '11 الستوريز والتغطية', '12 المنصات الرقمية',
+      '13 فريق الرحلة', '14 نموذج العمل', '15 الترتيبات واللوجستيات', '16 الاتفاق المالي',
+      '17 القيمة المكتسبة', '18 الحزمة المتكاملة', '19 الصورة الكاملة', '20 لنبدأ التعاون'
+    ]
+  };
+
+  const pageTitles = {
+    en: 'CapDare | Travel Content Production & Collaboration Proposal',
+    ar: 'كعب داير | ملف إنتاج محتوى السفر والشراكة الاستراتيجية'
+  };
+
+  // Language State Management
+  function setLanguage(lang) {
+    const validLang = lang === 'ar' ? 'ar' : 'en';
+    
+    // Set HTML attributes
+    document.documentElement.lang = validLang;
+    document.documentElement.dir = (validLang === 'ar' ? 'rtl' : 'ltr');
+    
+    // Update Page Title
+    document.title = pageTitles[validLang];
+
+    // Update active state in switcher buttons
+    langBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === validLang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Update timeline tooltips
+    navSteps.forEach((step, idx) => {
+      const tooltip = step.querySelector('.nav-timeline-tooltip');
+      const dot = step.querySelector('.nav-timeline-dot');
+      const label = timelineTitles[validLang][idx] || `Slide ${idx + 1}`;
+      if (tooltip) tooltip.textContent = label;
+      if (dot) dot.setAttribute('aria-label', label);
+    });
+
+    // Save preference
+    try {
+      localStorage.setItem('capdare_lang', validLang);
+    } catch (e) {
+      // localStorage might be unavailable in sandboxed iframes
+    }
+
+    // Refresh Navigation state without resetting slide position
+    updateNav(currentSectionIndex);
+  }
+
+  // Setup Language Switcher Listeners
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetLang = btn.getAttribute('data-lang');
+      setLanguage(targetLang);
+    });
+  });
 
   // Update Navigation UI
   function updateNav(index) {
@@ -37,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update Progress Fill
     if (navTrack) {
       const progressPercent = ((index) / (totalSections - 1)) * 100;
-      navTrack.style.width = `${Math.max(4, progressPercent)}%`;
+      navTrack.style.width = `${Math.max(5, progressPercent)}%`;
     }
 
     // Update Dots
@@ -69,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Intersection Observer for Smooth Scrolling
+  // Intersection Observer for Smooth Scrolling Detection
   const observerOptions = {
     root: null,
     rootMargin: '-20% 0px -20% 0px',
@@ -108,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Next / Prev button listeners
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
+      const isRtl = document.documentElement.dir === 'rtl';
       goToSlide(Math.max(0, currentSectionIndex - 1));
     });
   }
@@ -126,12 +200,30 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'PageDown' || e.key === ' ') {
+    const isRtl = document.documentElement.dir === 'rtl';
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
       e.preventDefault();
       goToSlide(Math.min(totalSections - 1, currentSectionIndex + 1));
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === 'PageUp') {
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
       e.preventDefault();
       goToSlide(Math.max(0, currentSectionIndex - 1));
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      // In LTR, Right is forward; In RTL, Right is backward
+      if (isRtl) {
+        goToSlide(Math.max(0, currentSectionIndex - 1));
+      } else {
+        goToSlide(Math.min(totalSections - 1, currentSectionIndex + 1));
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      // In LTR, Left is backward; In RTL, Left is forward
+      if (isRtl) {
+        goToSlide(Math.min(totalSections - 1, currentSectionIndex + 1));
+      } else {
+        goToSlide(Math.max(0, currentSectionIndex - 1));
+      }
     } else if (e.key === 'Home') {
       e.preventDefault();
       goToSlide(0);
@@ -170,7 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', closeAllModals);
   });
 
-  // Close modal when clicking outside dialog
   [galleryModal, videoModal].forEach(modal => {
     if (modal) {
       modal.addEventListener('click', (e) => {
@@ -200,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       const videoUrl = el.getAttribute('data-video-url');
-      const videoTitle = el.getAttribute('data-video-title') || 'Instagram Reel Reference';
+      const videoTitle = el.getAttribute('data-video-title') || 'Official Video Reference';
       const videoDesc = el.getAttribute('data-video-desc') || '';
 
       const modalTitle = document.getElementById('videoModalTitle');
@@ -215,6 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initialize
+  // Default to English on load
+  let initialLang = 'en';
+  try {
+    const saved = localStorage.getItem('capdare_lang');
+    if (saved === 'ar' || saved === 'en') {
+      initialLang = saved;
+    }
+  } catch (e) {}
+
+  setLanguage(initialLang);
   updateNav(0);
 });
