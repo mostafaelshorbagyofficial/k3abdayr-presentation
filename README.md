@@ -1,4 +1,12 @@
 # CAPDARE — Travel Content Production & Collaboration Proposal
+
+![Live Preview](./assets/preview.jpg)
+
+🌐 **Live Production Deployment:** [k3abdayr-presentation.vercel.app](https://k3abdayr-presentation.vercel.app)  
+👨‍💻 **Engineering & Execution:** [Mostafa Mohamed Farhat (Elshorbagy)](https://mostafa-portfolio-iota.vercel.app/) — *Interactive B2B Travel Content Production Presentation (ProMedia)*
+
+---
+
 ### ملف إنتاج محتوى السفر والشراكة السياحية الاستراتيجية (B2B)
 
 العرض التقديمي التفاعلي ثنائي اللغة (EN / AR) لخدمات إنتاج وتوثيق محتوى السفر والشراكة مع شركات السياحة ومنظمي الرحلات.
